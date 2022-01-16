@@ -1,0 +1,43 @@
+<%- include('includes/navbar.ejs') %>
+<form action="/store1" method="post">
+    <label for="bloodgrp">Which blood group do you want?</label>
+        
+        <select id="bloodgrp" name="bloodgrp">
+        <option value="O+ve">O +ve</option>
+        <option value="A+ve">A +ve</option>
+        <option value="B+ve">B +ve</option>
+        <option value="AB+ve">AB +ve</option>
+        <option value="A-ve">A -ve</option>
+        <option value="B-ve">B -ve</option>
+        <option value="AB-ve">AB -ve</option>
+        <option value="O-ve">O -ve</option>
+        </select>    
+        <button class="btn btn-danger mx-2 my-2">YES</button>
+</form>
+<% if (members.length > 0) { %>
+    <% for (let member of members) { %>
+        <li class="mx-5">
+            <ul>
+                <h3>NAME : <%= member.name %></h3>
+            </ul>
+            <ul>
+                <h5>BLOOD GROUP: <%= member.group %></h5>
+            </ul>
+            <ul>
+                <h5>PINCODE: <%= member.pincode %></h5>
+            </ul>
+            <ul>
+                <h5>ADDRESS: <%= member.address %></h5>
+            </ul>
+            <ul>
+                <h5>CONTACT: <%= member.phonenum %></h5>
+            </ul>
+        </li>
+        
+        <br>
+        <% }%>  
+        <% } else {%>  
+            <h1>OOPS! NOBODY IS HERE TO DONATE</h1>
+        <% } %>    
+</body>
+</html>

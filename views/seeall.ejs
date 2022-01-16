@@ -1,0 +1,26 @@
+<%- include('includes/navbar.ejs') %>
+<h1>ALL MEMBERS</h1>
+<% for (let member of members) { %>
+    <li class="mx-5">
+        <ul>
+            <h3>NAME : <%= member.name %></h3>
+        </ul>
+        <ul>
+            <h5>BLOOD GROUP: <%= member.bloodgroup %></h5>
+        </ul>
+        <ul>
+            <h5>PINCODE: <%= member.pin %></h5>
+        </ul>
+        <ul>
+            <h5>ADDRESS: <%= member.Address %></h5>
+        </ul>
+        <ul>
+            <h5>CONTACT: <%= member.contact %></h5>
+        </ul>
+    </li>
+    
+    <br>
+    <% } %>
+
+</body>
+</html>
