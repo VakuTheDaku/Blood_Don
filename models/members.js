@@ -13,6 +13,14 @@ module.exports = class Members {
     save() {
         return db.execute('INSERT INTO name_group (name, bloodgroup, pin, Address, contact) VALUES (?,?,?,?,?)', [this.name, this.group, this.pincode, this.address, this.phonenum])
     }
+    deletee() {
+        
+        return db.execute('DELETE FROM name_group WHERE name= ?', [this.name])
+    }
+
+
+
+
     static retrieve(){
         return db.execute('SELECT * FROM name_group')
     }

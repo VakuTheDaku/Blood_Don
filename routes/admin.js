@@ -61,6 +61,28 @@ var reqlistener=(req,res,next)=>{
     
     
 }
+router.post('/delete', (req,res,next)=>{
     
+    res.render('delete',{pageTitle: 'delete', name: 'delete'})
+})
+router.post('/deletedata', (req,res,next)=>{
+    var name=req.body.title
+    var bloodgroup= req.body.bloodgrp
+    Member.retrieve().then(([rows,fieldData])=>{
+        
+        for (var i=0;i<rows.length;i++){
+            
+            if(rows[i].bloodgroup===bloodgroup && rows[i].name===name){
+                const member =new Member(rows[i].name, rows[i].bloodgroup, rows[i].pin, rows[i].Address, rows[i].contact)
+                console.log(member.name)
+                member.deletee().then(()=>{res.redirect('/')}).catch((err)=>{console.log(err)})
+    
+        }
+    }
+    res.redirect('/')
+     
+}).catch((err)=>console.log(err))
+    
+})   
 router.get('/',reqlistener)
 module.exports=router
