@@ -16,12 +16,13 @@ module.exports = class Members {
     static retrieve(){
         return db.execute('SELECT * FROM name_group')
     }
-    dave() {
-        members.push(this)
+    dave(i) {
+        
+        members[i]=this
     }
     static delete() {
-        for(var i=0;i<=members.length;i++){
-            members.pop()
+        for(var i=0;i<members.length;i++){
+            members[i]=0
             
         }
     }

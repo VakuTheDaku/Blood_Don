@@ -14,8 +14,9 @@
         </select>    
         <button class="btn btn-danger mx-2 my-2">YES</button>
 </form>
-<% if (members.length > 0) { %>
+<% if (members.length > 0 && xfactor ==1) { %>
     <% for (let member of members) { %>
+        <% if (member != 0 && member != null) { %>
         <li class="mx-5">
             <ul>
                 <h3>NAME : <%= member.name %></h3>
@@ -33,11 +34,12 @@
                 <h5>CONTACT: <%= member.phonenum %></h5>
             </ul>
         </li>
-        
+            
         <br>
         <% }%>  
+        <% }%> 
         <% } else {%>  
-            <h1>OOPS! NOBODY IS HERE TO DONATE</h1>
-        <% } %>    
+            <h2>Oops! Nobody is here to donate</h2>
+        <% } %>
 </body>
 </html>

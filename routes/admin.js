@@ -9,7 +9,14 @@ router.get('/form', (req,res,next)=>{
     res.render('form',{pageTitle: 'form', name: 'form'})
 })
 router.get('/displaygrp', (req,res,next)=>{
-    res.render('displaygrp', {members:Member.send(), pageTitle: 'displaygrp', name: 'displaygrp'})
+    v=Member.send()
+    var x=0
+    for(i=0;i<v.length;i++){
+        if(v[i]!=0){
+            x=1
+        }
+    }
+    res.render('displaygrp', {members:Member.send(), pageTitle: 'displaygrp', name: 'displaygrp', xfactor: x})
     Member.delete()
     
     
@@ -32,16 +39,19 @@ router.post('/seeall', (req,res,next)=>{
     }).catch((err)=>console.log(err))
 })
 router.post('/store1', (req,res,next)=>{
+    var j=0
     Member.retrieve().then(([rows,fieldData])=>{
+        
         for (var i=0;i<rows.length;i++){
+            
             if(rows[i].bloodgroup===req.body.bloodgrp){
                 const member =new Member(rows[i].name, rows[i].bloodgroup, rows[i].pin, rows[i].Address, rows[i].contact)
-                
-                member.dave()
+                j++
+                member.dave(j)
         }
     }
     res.redirect('/displaygrp')
-       
+     
 }).catch((err)=>console.log(err))
 })
 
