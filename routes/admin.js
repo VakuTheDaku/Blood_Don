@@ -71,7 +71,7 @@ router.post('/deletedata', (req,res,next)=>{
     Member.retrieve().then(([rows,fieldData])=>{
         var j=0
         for (var i=0;i<rows.length;i++){
-            j++
+            
             if(rows[i].bloodgroup===bloodgroup && rows[i].name===name){
                 const member =new Member(rows[i].name, rows[i].bloodgroup, rows[i].pin, rows[i].Address, rows[i].contact)
                 console.log(member.name)
@@ -79,6 +79,9 @@ router.post('/deletedata', (req,res,next)=>{
                 member.deletee().then(()=>{res.redirect('/')}).catch((err)=>{console.log(err)})
                 
         }
+        else{
+            j++
+            }
         
     }
     if(j===rows.length)
