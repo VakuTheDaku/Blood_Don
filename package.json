@@ -8,8 +8,13 @@
     "express": "^4.17.2",
     "mysql2": "^2.3.3"
   },
+  "name": "first_node_app",
+  "version": "1.0.0",
+  "description": "Blood donation site",
+  "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "start-server": "node app.js"
     
   }
 }
