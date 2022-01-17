@@ -14,5 +14,4 @@ app.use(adminRouter)
 //     console.log(result)
 // }).catch((err)=>{console.log(err)})
 
-app.listen(process.env.PORT || PORT, ()=>{
-    console.log(`Server running on port ${PORT}`)})
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
