@@ -63,7 +63,7 @@ var reqlistener=(req,res,next)=>{
 }
 router.post('/delete', (req,res,next)=>{
     
-    res.render('delete',{pageTitle: 'delete', name: 'delete'})
+    res.render('delete',{pageTitle: 'delete', name: 'delete', yfactor: 0})
 })
 router.post('/deletedata', (req,res,next)=>{
     var name=req.body.title
@@ -76,7 +76,10 @@ router.post('/deletedata', (req,res,next)=>{
                 const member =new Member(rows[i].name, rows[i].bloodgroup, rows[i].pin, rows[i].Address, rows[i].contact)
                 console.log(member.name)
                 member.deletee().then(()=>{res.redirect('/')}).catch((err)=>{console.log(err)})
-    
+                
+        }
+        else{
+            res.render('delete', {pageTitle: 'delete', name: 'delete', yfactor: 1})
         }
     }
     res.redirect('/')
