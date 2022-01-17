@@ -81,7 +81,7 @@ router.post('/deletedata', (req,res,next)=>{
         }
         
     }
-    if(j===rows.length-1)
+    if(j===rows.length)
     {
         res.render('delete', {pageTitle: 'delete', name: 'delete', yfactor: 1})
     }
