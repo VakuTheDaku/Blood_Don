@@ -3,6 +3,7 @@ const express=require('express')
 const app=express()
 const bodyParser= require('body-parser')
 const db=require('./util/database')
+const PORT=3001
 app.use(bodyParser.urlencoded({extended: false}))
 adminRouter =require('./routes/admin')
 
@@ -14,4 +15,5 @@ app.use(adminRouter)
 //     console.log(result)
 // }).catch((err)=>{console.log(err)})
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(process.env.PORT || PORT, ()=>{
+    console.log(`Server running on port ${PORT}`)})
